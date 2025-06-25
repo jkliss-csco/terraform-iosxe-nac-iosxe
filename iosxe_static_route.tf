@@ -5,9 +5,9 @@ locals {
         key         = format("%s/%s", device.name, static_route.name)
         device_name = device.name
         entries = [for e in try(static_route.entries, []) : {
-          prefix      = try(e.prefix, local.defaults.iosxe.configuration.static_routes.standard.entries.prefix, null)
-          mask        = try(e.mask, local.defaults.iosxe.configuration.static_routes.standard.entries.mask, null)
-          next_hops   = try(e.next_hops, local.defaults.iosxe.configuration.static_routes.standard.entries.next_hops, null)
+          prefix      = try(e.prefix, local.defaults.iosxe.configuration.static_routes.prefix, null)
+          mask        = try(e.mask, local.defaults.iosxe.configuration.static_routes.mask, null)
+          next_hops   = try(e.next_hops, local.defaults.iosxe.configuration.static_routes.next_hops, null)
         }
         ]
       }
