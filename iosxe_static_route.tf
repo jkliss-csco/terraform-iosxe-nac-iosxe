@@ -2,10 +2,14 @@ locals {
   static_routes = flatten([
     for device in local.devices : [
       for static_route in try(local.device_config[device.name].routing.static_routes, []) : {
+        key         = format("%s/%s", device.name, static_route.name)
         device_name = device.name
-        prefix      = static_route.prefix
-        mask        = static_route.mask
-        next_hops   = static_route.next_hops
+        entries = [for e in try(static_route.entries, []) : {
+          prefix      = try(e.prefix, local.defaults.iosxe.configuration.static_routes.standard.entries.prefix, null)
+          mask        = try(e.mask, local.defaults.iosxe.configuration.static_routes.standard.entries.mask, null)
+          next_hops   = try(e.next_hops, local.defaults.iosxe.configuration.static_routes.standard.entries.next_hops, null)
+        }
+        ]
       }
     ]
   ])
@@ -15,7 +19,7 @@ locals {
 resource "iosxe_static_route" "static_routes" {
   # Loop through each static route in the flattened list
   for_each = {
-    for route in local.static_routes : "${route.device_name}->${route.prefix}->${route.mask}" => route
+    for route in local.static_routes : route.key => route
   }
 
   device    = each.value.device_name
