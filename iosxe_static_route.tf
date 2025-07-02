@@ -21,7 +21,7 @@ locals {
   ])
 }
 
-resource "iosxe_static_routes" "static_routes" {
+resource "iosxe_static_route" "static_routes" {
   for_each = {
     for route in local.static_routes : route.key => route
   }
