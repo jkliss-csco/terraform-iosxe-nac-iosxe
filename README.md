@@ -108,7 +108,7 @@ module "iosxe" {
 | [iosxe_route_map.route_map](https://registry.terraform.io/providers/CiscoDevNet/iosxe/latest/docs/resources/route_map) | resource |
 | [iosxe_save_config.save_config](https://registry.terraform.io/providers/CiscoDevNet/iosxe/latest/docs/resources/save_config) | resource |
 | [iosxe_service.service](https://registry.terraform.io/providers/CiscoDevNet/iosxe/latest/docs/resources/service) | resource |
-| [iosxe_static_route.static_route](https://registry.terraform.io/providers/CiscoDevNet/iosxe/latest/docs/resources/static_route) | resource |
+| [iosxe_static_route.static_routes](https://registry.terraform.io/providers/CiscoDevNet/iosxe/latest/docs/resources/static_route) | resource |
 | [iosxe_system.system](https://registry.terraform.io/providers/CiscoDevNet/iosxe/latest/docs/resources/system) | resource |
 | [iosxe_template.template](https://registry.terraform.io/providers/CiscoDevNet/iosxe/latest/docs/resources/template) | resource |
 | [iosxe_vtp.vtp](https://registry.terraform.io/providers/CiscoDevNet/iosxe/latest/docs/resources/vtp) | resource |
